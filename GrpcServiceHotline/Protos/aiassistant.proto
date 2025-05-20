@@ -1,0 +1,21 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "GrpcServiceHotline";
+
+package aiassistant;
+
+// The greeting service definition.
+service Assistant {
+  // Sends a greeting
+  rpc SayProblem (ProblemRequest) returns (AnswerReply);
+}
+
+// The request message containing the user's name.
+message ProblemRequest {
+  string problem = 1;
+}
+
+// The response message containing the greetings.
+message AnswerReply {
+  string answer = 1;
+}

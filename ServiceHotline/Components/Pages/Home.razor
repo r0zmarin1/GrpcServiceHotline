@@ -1,0 +1,95 @@
+﻿@page "/"
+@using Grpc.Net.Client
+@using Google.Protobuf
+@using ServiceHotline
+
+<PageTitle>Служба поддержки</PageTitle>
+<div class="container-sm ">
+    <div class="row text-center">
+        <h1>Добро пожаловать на сайт службы поддержки людей в кризисной ситуации</h1>
+    </div>
+    <div class="row text-center">
+        <p>Пожалуйста, опишите свою проблему, а наш консультант проведет с вами беседу.</p>
+        
+    </div>
+    @if (errorMes != null)
+    {
+        <div class="row">
+            @errorMes
+        </div>
+    }
+    else
+    {
+        <div class="container border-dark" style="border:solid; margin:10px">
+            <div class="row align-items-sm-start">
+                <div class="row">
+                    <p>Консультант службы поддржки</p>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2 align-content-center">
+                        <img src="assistant.png" style="width:70px; border-radius:90px;border:solid;border-width:2px" />
+                    </div>
+                    <div class="col-sm-10">
+                        <p>@answer</p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="row  align-content-end    ">
+                <div class="row">
+                    <p>Вы</p>
+                </div>
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="row">
+                            <input type="text" @bind-value="@problem"  placeholder="Опишите вашу проблему"/>
+                        </div> 
+                        <div class="row">
+                            <button type="submit" @* @onclick="" *@>Отправить</button>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <img src="user.png" />
+                    </div>
+                </div>
+            </div>
+
+        
+        </div>
+    }
+
+</div>
+
+
+
+
+@code{
+    
+    string problem { get; set; } = "fefrr";
+    string errorMes { get; set; }
+    string answer { get; set; } = "rgrgrg";
+    // async void SayProblemSample()
+    // {
+    //     try
+    //     {
+    //         var channel = GrpcChannel.ForAddress("http://localhost:5169", new GrpcChannelOptions
+    //             {
+    //                 HttpHandler = new SocketsHttpHandler
+    //                 {
+    //                     KeepAlivePingDelay = TimeSpan.FromSeconds(30),
+    //                     PooledConnectionIdleTimeout = Timeout.InfiniteTimeSpan
+    //                 }
+    //             });
+
+
+
+    //         var clientAssistant = Assistant.AssistantClient(channel);
+    //     }
+    //     catch(Exception ex)
+    //     {
+    //         errorMes = ex.Message;
+    //     }
+
+    // }
+}
+

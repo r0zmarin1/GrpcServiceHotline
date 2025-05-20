@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35222.181
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrpcServiceHotline", "GrpcServiceHotline\GrpcServiceHotline.csproj", "{F4D80254-D519-4EBF-8E76-99C4E31C7043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ServiceHotline", "ServiceHotline\ServiceHotline.csproj", "{9389156A-5627-4B79-80C7-AC89189672F6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F4D80254-D519-4EBF-8E76-99C4E31C7043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4D80254-D519-4EBF-8E76-99C4E31C7043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4D80254-D519-4EBF-8E76-99C4E31C7043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4D80254-D519-4EBF-8E76-99C4E31C7043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9389156A-5627-4B79-80C7-AC89189672F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9389156A-5627-4B79-80C7-AC89189672F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9389156A-5627-4B79-80C7-AC89189672F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9389156A-5627-4B79-80C7-AC89189672F6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {045B01E7-4487-4B80-9DE3-43A0DE81D744}
+	EndGlobalSection
+EndGlobal
