@@ -8,7 +8,10 @@ html, body {
     font-weight: 400;
     font-style: normal;
 }
-
+.con{
+    height:850px;
+    overflow-y:auto;
+}
 .caveat-<uniquifier > {
     font-family: "Caveat", cursive;
     font-optical-sizing: auto;

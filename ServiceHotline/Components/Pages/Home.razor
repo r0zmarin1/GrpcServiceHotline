@@ -10,62 +10,61 @@
     </div>
     <div class="row text-center" style="color:papayawhip">
         <p>Пожалуйста, опишите свою проблему, а наш консультант проведет с вами беседу.</p>
-
     </div>
 
     <div class="container" style="border:4px solid;border-radius:50px;border-color:papayawhip; padding:20px">
-        <div class="row " style="overflow-y:scroll">
-
-
-            <div class="row " style="display:flex; justify-content:start">
-                @foreach (var ans in Answers)
-                {
-                    <div class="row">
-                        <p style="margin:0;text-decoration:underline;text-underline-offset:3px;color:papayawhip">Консультант службы поддержки</p>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-1" style="display:flex; align-items:end">
-                            <div style="display: flex;border: 5px solid; border-color:burlywood; height: 84.292px;width: 84.292px;border-radius: 50%;overflow: hidden;justify-content: center;">
-                                <img src="assistant.png" style="width:70px;">
+        <div class="row ">
+            <div class="con">
+                <div class="row" style="display:flex; justify-content:start;margin:0px">
+                    @foreach (var ans in Messages)
+                    {
+                        @if (ans.type)
+                        {
+                            <div class="row">
+                                <p style="margin:0;text-decoration:underline;text-underline-offset:3px;color:papayawhip">Консультант службы поддержки</p>
                             </div>
-                        </div>
-                        <div class="col-sm-11" style="display:flex; align-items:center;">
-                            <div style="border: 5px solid;border-radius:50px;border-color:burlywood;padding:35px;background-color:papayawhip;color:#b08f70">
-                                <p style="margin:0;word-break:break-all">@ans</p>
+                            <div class="row" >
+                                <div class="col-sm-1" style="display:flex; align-items:end">
+                                    <div style="display: flex;border: 5px solid; border-color:burlywood; height: 84.292px;width: 84.292px;border-radius: 50%;overflow: hidden;justify-content: center;">
+                                        <img src="assistant.png" style="width:70px;">
+                                    </div>
+                                </div>
+                                <div class="col-sm-11" style="display:flex; align-items:center;">
+                                    <div style="border: 5px solid;border-radius:50px;border-color:burlywood;padding:35px;background-color:papayawhip;color:#b08f70">
+                                        <p style="margin:0;word-break:break-all">@ans.message</p>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                }
+                        }
+                        else
+                        {
+                            <div class="row">
+                                <div class="row">
+                                    <p style="display:flex; justify-content:end; padding-right:15px;margin-bottom:0px;text-decoration:underline;text-underline-offset:3px;color:papayawhip">Вы</p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-11">
+                                        <div class="row">
+                                            <div style="border: 5px solid;border-radius:50px;border-color:burlywood;padding:35px;background-color:papayawhip;color:#b08f70">
+                                                <p style="margin:0;word-break:break-all">@ans.message</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-1" style="display:flex; align-items:end">
+                                        <div style="display: flex;border: 5px solid;border-color:burlywood;height: 84.292px;width: 84.292px;border-radius: 50%;overflow: hidden;justify-content: center;">
+                                            <img src="user.png" style="width:70px;">
+                                        </div>
+                                    </div>
 
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
 
             </div>
             <div class="row" style="display:flex; justify-content:end;">
 
-                
-                @foreach (var prob in Problems)
-                {
-                    <div class="row">
-                        <div class="row">
-                            <p style="display:flex; justify-content:end; padding-right:15px;margin-bottom:0px;text-decoration:underline;text-underline-offset:3px;color:papayawhip">Вы</p>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-11">
-                                <div class="row">
-                                    <div style="border: 5px solid;border-radius:50px;border-color:burlywood;padding:35px;background-color:papayawhip;color:#b08f70">
-                                        <p style="margin:0;word-break:break-all">@prob</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-1" style="display:flex; align-items:end">
-                                <div style="display: flex;border: 5px solid;border-color:burlywood;height: 84.292px;width: 84.292px;border-radius: 50%;overflow: hidden;justify-content: center;">
-                                    <img src="user.png" style="width:70px;">
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                }
                 <div class="row" style="padding:15px">
                     <input type="text" style="color:#b08f70;outline:none;border: 5px solid;border-radius:50px;border-color:burlywood;padding:35px;background-color:papayawhip;" @bind-value="@problem" @bind-value:event="oninput" @onkeydown="@keyDown" placeholder="Опишите вашу проблему" />
 
@@ -89,20 +88,31 @@
     string overflow = "";
     string problem { get; set; } = "";
     string answer { get; set; } = "Привет! Расскажи свою проблему 🥰";
-    List<string> Answers { get; set; } = new();
-    List<string> Problems { get; set; } = new();
+    List<Message> Messages { get; set; } = new();
+
+    class Message
+    {
+        public string message { get; set; }
+        public bool type { get; set; }
+    }
 
     protected override void OnInitialized()
     {
         base.OnInitialized();
-        Answers.Add(answer);
+        Messages.Add(new Message { message = answer, type = true });
 
         InvokeAsync(StateHasChanged);
     }
     async void SayProblemSample(string prob)
     {
+      
         try
         {
+            if (Messages.Count > 3)
+            {
+                overflow = "overflow-scroll";
+                await InvokeAsync(StateHasChanged);
+            }
             var channel = GrpcChannel.ForAddress("http://localhost:5169", new GrpcChannelOptions
                 {
                     HttpHandler = new SocketsHttpHandler
@@ -113,14 +123,17 @@
                 });
             await channel.ConnectAsync();
 
-            
+
+            var ask = prob;
+            problem = "";
             var clientAssistant = new Assistant.AssistantClient(channel);
-            Problems.Add(prob);
-            var responce = await clientAssistant.SayProblemAsync(new ProblemRequest { Problem = prob });
+            Messages.Add(new Message { message = ask, type = false });
+            await InvokeAsync(StateHasChanged);
+            var responce = await clientAssistant.SayProblemAsync(new ProblemRequest { Problem = ask });
             var answr = responce.Answer;
             string[] ansArray = answr.ToString().Split("</think>");
             answer = ansArray[1];
-            Answers.Add(answer);
+            Messages.Add(new Message { message = answer, type = true });
             await InvokeAsync(StateHasChanged);
 
         }
@@ -135,6 +148,7 @@
         if (arg.Code == "Enter")
         {
             SayProblemSample(problem);
+
         }
     }
 
