@@ -6,96 +6,137 @@
 <PageTitle>Служба поддержки</PageTitle>
 <div class="container-sm " style="font-family:Caveat;font-size:20pt">
     <div class="row text-center">
-        <h1>Добро пожаловать на сайт службы поддержки людей в кризисной ситуации</h1>
+        <h1 style="color:papayawhip">Добро пожаловать на сайт службы поддержки людей в кризисной ситуации</h1>
     </div>
-    <div class="row text-center">
+    <div class="row text-center" style="color:papayawhip">
         <p>Пожалуйста, опишите свою проблему, а наш консультант проведет с вами беседу.</p>
-        
-    </div>
-    @if (errorMes != null)
-    {
-        <div class="row">
-            @errorMes
-        </div>
-    }
-    else
-    {
-        <div class="container" style="border:4px solid;border-radius:50px;border-color:papayawhip; padding:20px">
-            <div class="row align-items-sm-start">
-                <div class="row">
-                    <p style="margin:0;colo">Консультант службы поддержки</p>
-                </div>
-                <div class="row" >
-                    <div class="col-sm-1" style="display:flex; align-items:end">
-                        <div style="display: flex;border: 5px solid; border-color:burlywood; height: 84.292px;width: 84.292px;border-radius: 50%;overflow: hidden;justify-content: center;">
-                            <img src="assistant.png" style="width:70px;">
-                        </div>
-                    </div>
-                    <div class="col-sm-11" style="display:flex; align-items:center;">
-                        <div style="border: 5px solid;border-radius:50px;border-color:burlywood;padding:35px;background-color:papayawhip">
-                            <p style="margin:0;word-break:break-all">hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhgghjvhjfjfjhfjfjfjfjfhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhgghjvhjfjfjhfjfjfjfjfhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhgghjvhjfjfjhfjfjfjfjfhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhgghjvhjfjfjhfjfjfjfjfhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhgghjvhjfjfjhfjfjfjfjfhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhgghjvhjfjfjhfjfjfjfjfhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhgghjvhjfjfjhfjfjfjfjfhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhgghjvhjfjfjhfjfjfjfjf</p>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <div class="row" >
-                <div class="row" >
-                    <p>Вы</p>
-                </div>
-                <div class="row">
-                    <div class="col-sm-11">
-                        <div class="row">
-                            <input type="text" style="border: 5px solid;border-radius:50px;border-color:burlywood;padding:35px;background-color:papayawhip" @bind-value="@problem" placeholder="Опишите вашу проблему" />
-                        </div> 
-                    </div>
-                    <div class="col-sm-1" style="display:flex; align-items:end">
-                        <div style="display: flex;border: 5px solid; border-color:burlywood;height: 84.292px;width: 84.292px;border-radius: 50%;overflow: hidden;justify-content: center;">
-                            <img src="user.png" style="width:70px;">
-                        </div>
-                    </div>
-                    <div class="row" style="display:flex;justify-content:center;margin-top:30px">
-                        <button type="submit" style="display: flex;border: 5px solid; border-color:burlywood; border-radius:50px;width:300px;overflow:hidden;background-color:papayawhip;justify-content: center;" @* @onclick="" *@>Отправить</button>
-                    </div>
-                </div>
-            </div>
 
-        
+    </div>
+
+    <div class="container" style="border:4px solid;border-radius:50px;border-color:papayawhip; padding:20px">
+        <div class="row " style="overflow-y:scroll">
+
+
+            <div class="row " style="display:flex; justify-content:start">
+                @foreach (var ans in Answers)
+                {
+                    <div class="row">
+                        <p style="margin:0;text-decoration:underline;text-underline-offset:3px;color:papayawhip">Консультант службы поддержки</p>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-1" style="display:flex; align-items:end">
+                            <div style="display: flex;border: 5px solid; border-color:burlywood; height: 84.292px;width: 84.292px;border-radius: 50%;overflow: hidden;justify-content: center;">
+                                <img src="assistant.png" style="width:70px;">
+                            </div>
+                        </div>
+                        <div class="col-sm-11" style="display:flex; align-items:center;">
+                            <div style="border: 5px solid;border-radius:50px;border-color:burlywood;padding:35px;background-color:papayawhip;color:#b08f70">
+                                <p style="margin:0;word-break:break-all">@ans</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+            <div class="row" style="display:flex; justify-content:end;">
+
+                
+                @foreach (var prob in Problems)
+                {
+                    <div class="row">
+                        <div class="row">
+                            <p style="display:flex; justify-content:end; padding-right:15px;margin-bottom:0px;text-decoration:underline;text-underline-offset:3px;color:papayawhip">Вы</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-11">
+                                <div class="row">
+                                    <div style="border: 5px solid;border-radius:50px;border-color:burlywood;padding:35px;background-color:papayawhip;color:#b08f70">
+                                        <p style="margin:0;word-break:break-all">@prob</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-1" style="display:flex; align-items:end">
+                                <div style="display: flex;border: 5px solid;border-color:burlywood;height: 84.292px;width: 84.292px;border-radius: 50%;overflow: hidden;justify-content: center;">
+                                    <img src="user.png" style="width:70px;">
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                }
+                <div class="row" style="padding:15px">
+                    <input type="text" style="color:#b08f70;outline:none;border: 5px solid;border-radius:50px;border-color:burlywood;padding:35px;background-color:papayawhip;" @bind-value="@problem" @bind-value:event="oninput" @onkeydown="@keyDown" placeholder="Опишите вашу проблему" />
+
+                </div>
+                <div class="row" style="display:flex;justify-content:center;margin-top:30px">
+                    <button type="submit" style="color:#b08f70;display: flex;border: 5px solid; border-color:burlywood; border-radius:50px;width:300px;overflow:hidden;background-color:papayawhip;justify-content: center;" @onclick="(()=>SayProblemSample(problem))">Отправить</button>
+                </div>
+
+            </div>
         </div>
-    }
+
+    </div>
+
 
 </div>
 
 
 
 
-@code{
-    
-    string problem { get; set; } = "fefrr";
-    string errorMes { get; set; }
-    string answer { get; set; } = "rgrgrg";
-    // async void SayProblemSample()
-    // {
-    //     try
-    //     {
-    //         var channel = GrpcChannel.ForAddress("http://localhost:5169", new GrpcChannelOptions
-    //             {
-    //                 HttpHandler = new SocketsHttpHandler
-    //                 {
-    //                     KeepAlivePingDelay = TimeSpan.FromSeconds(30),
-    //                     PooledConnectionIdleTimeout = Timeout.InfiniteTimeSpan
-    //                 }
-    //             });
+@code {
+    string overflow = "";
+    string problem { get; set; } = "";
+    string answer { get; set; } = "Привет! Расскажи свою проблему 🥰";
+    List<string> Answers { get; set; } = new();
+    List<string> Problems { get; set; } = new();
 
+    protected override void OnInitialized()
+    {
+        base.OnInitialized();
+        Answers.Add(answer);
 
+        InvokeAsync(StateHasChanged);
+    }
+    async void SayProblemSample(string prob)
+    {
+        try
+        {
+            var channel = GrpcChannel.ForAddress("http://localhost:5169", new GrpcChannelOptions
+                {
+                    HttpHandler = new SocketsHttpHandler
+                    {
+                        KeepAlivePingDelay = TimeSpan.FromSeconds(30),
+                        PooledConnectionIdleTimeout = Timeout.InfiniteTimeSpan
+                    }
+                });
+            await channel.ConnectAsync();
 
-    //         var clientAssistant = Assistant.AssistantClient(channel);
-    //     }
-    //     catch(Exception ex)
-    //     {
-    //         errorMes = ex.Message;
-    //     }
+            
+            var clientAssistant = new Assistant.AssistantClient(channel);
+            Problems.Add(prob);
+            var responce = await clientAssistant.SayProblemAsync(new ProblemRequest { Problem = prob });
+            var answr = responce.Answer;
+            string[] ansArray = answr.ToString().Split("</think>");
+            answer = ansArray[1];
+            Answers.Add(answer);
+            await InvokeAsync(StateHasChanged);
 
-    // }
+        }
+        catch (Exception ex)
+        {
+            answer = ex.Message;
+        }
+
+    }
+    void keyDown(KeyboardEventArgs arg)
+    {
+        if (arg.Code == "Enter")
+        {
+            SayProblemSample(problem);
+        }
+    }
+
 }
 

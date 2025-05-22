@@ -11,7 +11,8 @@
                 if (httpClient == null)
                     httpClient = new HttpClient()
                     {
-                        BaseAddress = new Uri("http://192.168.4.100:61234/api")
+                        BaseAddress = new Uri("http://192.168.4.100:61234/api/"),
+                        Timeout = TimeSpan.FromMinutes(5)
                     };
                 return httpClient;
             }
